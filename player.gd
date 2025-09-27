@@ -152,7 +152,7 @@ func _on_interact_box_area_entered(area):
 		interactable = area
 
 func _on_interact_box_area_exited(area):
-	if area.has_method("interact"):
+	if area.has_method("highlight"):
 		area.highlight(false)
 	if interactable == area:
 		interactable = null

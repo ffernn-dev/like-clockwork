@@ -1,11 +1,20 @@
 extends StaticBody2D
 
 @export var lever: Lever
+var leverless
+
+var closing := false
 
 @onready var anim := $Sprite
 
 func _ready():
-	lever.toggled.connect(_on_lever_toggled)
+	if lever:
+		lever.toggled.connect(_on_lever_toggled)
+		leverless = false
+		anim.play("locked")
+	else:
+		anim.play("closed")
+		leverless = true
 
 func _on_lever_toggled(state: bool):
 	if state:
@@ -13,8 +22,21 @@ func _on_lever_toggled(state: bool):
 	else:
 		close()
 
-func open():
-	anim.play("open")
+func open(without_key := false):
+	if leverless or not without_key:
+		anim.play("open")
+	
 
-func close():
-	anim.play("locked")
+func close(without_key := false):
+	if leverless or not without_key:
+		closing = true
+		anim.play_backwards("open")
+
+
+func _on_sprite_animation_finished():
+	if closing:
+		if leverless:
+			anim.play("closed")
+		else:
+			anim.play("locked")
+	closing = false

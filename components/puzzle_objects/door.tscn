@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsocu3pgododp"]
+[gd_scene load_steps=13 format=3 uid="uid://dsocu3pgododp"]
 
 [ext_resource type="Texture2D" uid="uid://dsswu4odk5eux" path="res://assets/sprites/door(32x48p).png" id="1_20bt6"]
 [ext_resource type="Script" uid="uid://dlkcybg8te8i4" path="res://components/puzzle_objects/door.gd" id="1_sqh30"]
+[ext_resource type="Script" uid="uid://ikdsc2ydik53" path="res://components/puzzle_objects/door_interact_box.gd" id="3_clmxy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jtxk"]
+atlas = ExtResource("1_20bt6")
+region = Rect2(32, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20bt6"]
 atlas = ExtResource("1_20bt6")
 region = Rect2(0, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqh30"]
-atlas = ExtResource("1_20bt6")
-region = Rect2(32, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clmxy"]
 atlas = ExtResource("1_20bt6")
@@ -31,6 +32,14 @@ region = Rect2(160, 0, 32, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2jtxk")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_20bt6")
 }],
 "loop": false,
@@ -38,9 +47,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqh30")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_clmxy")
 }, {
@@ -61,15 +67,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20bt6"]
 size = Vector2(48, 140)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqh30"]
+size = Vector2(96, 140)
+
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_sqh30")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2jtxk")
-animation = &"locked"
+animation = &"open"
 autoplay = "locked"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 26)
 shape = SubResource("RectangleShape2D_20bt6")
+
+[node name="InteractBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_clmxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+position = Vector2(0, 26)
+shape = SubResource("RectangleShape2D_sqh30")
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

@@ -6,11 +6,14 @@ var player: Player2D
 
 func _ready():
 	spawn_player()
-	player.died.connect(_on_player_died)
 
 func spawn_player():
+	if len(dead_players) > 3:
+		dead_players[0].call_deferred("queue_free")
+		dead_players.pop_front()
 	player = player_scene.instantiate()
 	add_child(player)
+	player.died.connect(_on_player_died)
 
 func kill_player():
 	player.die(true)
@@ -22,13 +25,12 @@ func _input(event):
 		kill_player()
 
 func _on_player_died(graceful) -> void:
-	print(graceful)
 	if not graceful:
 		restart_level()
 
 func restart_level() -> void:
 	for i in dead_players:
-		call_deferred("i.queue_free")
+		i.call_deferred("queue_free")
 	#  reload current scene
 	var current := get_tree().current_scene
 	var path := current.scene_file_path

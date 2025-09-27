@@ -18,3 +18,6 @@ position = Vector2(309, 303)
 [node name="Door" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("4_1bvp3")]
 position = Vector2(909, 288)
 lever = NodePath("../Lever")
+
+[node name="Door2" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(50, 288)
