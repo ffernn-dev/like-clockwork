@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://ba2aoclpcasxr"]
+[gd_scene load_steps=37 format=3 uid="uid://ba2aoclpcasxr"]
 
 [ext_resource type="Script" uid="uid://b3aygmhvgn28f" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bqc4rk6dt6qx6" path="res://assets/sprites/clock-guy-main.png" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bg1heyqla43a1" path="res://assets/sprites/clock-key.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cndymau5ysw2i" path="res://assets/lights/EyeLight.png" id="4_hqtel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(72, 108)
@@ -227,15 +228,6 @@ animations = [{
 radius = 57.0
 height = 178.0
 
-[sub_resource type="Gradient" id="Gradient_i3pqv"]
-offsets = PackedFloat32Array(0, 0.7326284)
-colors = PackedColorArray(0.9652568, 0.9652568, 0.9652568, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hqtel"]
-gradient = SubResource("Gradient_i3pqv")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "IdleCollider", "RunCollider", "JumpCollider", "DeathCollider")]
 script = ExtResource("1_onrkg")
 PlayerSprite = NodePath("Sprite")
@@ -287,6 +279,16 @@ autoplay = "idle"
 frame = 5
 offset = Vector2(-1, 0)
 
+[node name="PointLight2D" type="PointLight2D" parent="Sprite"]
+position = Vector2(12, -2.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_hqtel")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Sprite"]
+position = Vector2(3, -2.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_hqtel")
+
 [node name="Key" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4, -13)
 scale = Vector2(4, 4)
@@ -303,14 +305,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_i3pqv")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(23, -22)
-texture = SubResource("GradientTexture2D_hqtel")
-
-[node name="PointLight2D" type="PointLight2D" parent="PointLight2D"]
-position = Vector2(-37, 0)
-texture = SubResource("GradientTexture2D_hqtel")
 
 [connection signal="area_entered" from="InteractBox" to="." method="_on_interact_box_area_entered"]
 [connection signal="area_exited" from="InteractBox" to="." method="_on_interact_box_area_exited"]

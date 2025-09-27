@@ -136,6 +136,9 @@ func _ready():
 
 func die():
 	dead = true
+	$PointLight2D.enabled = false
+	$PointLight2D2.enabled = false
+	$InteractBox.monitoring = false
 
 func _on_interact_box_area_entered(area):
 	if area.has_method("highlight"):
@@ -163,7 +166,6 @@ func _updateData():
 	dashMagnitude = maxSpeed * dashLength
 	dashCount = dashes
 	maxSpeedLock = maxSpeed
-	
 	animScaleLock = abs(anim.scale)
 	keyPosLockX = animKey.position.x
 	colliderScaleLockY = col.scale.y
