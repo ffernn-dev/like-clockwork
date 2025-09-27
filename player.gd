@@ -102,8 +102,10 @@ var colliderScaleLockY
 var colliderPosLockY
 var colliderPosLockX
 var anim
+var animKey
 var col
 var animScaleLock : Vector2
+var keyPosLockX
 
 #Inputs
 var upHold
@@ -128,6 +130,7 @@ func _ready():
 	dead = false
 	wasMovingR = true
 	anim = PlayerSprite
+	animKey = $Key
 	col = IdleCollider
 	_updateData()
 
@@ -158,6 +161,7 @@ func _updateData():
 	maxSpeedLock = maxSpeed
 	
 	animScaleLock = abs(anim.scale)
+	keyPosLockX = animKey.position.x
 	colliderScaleLockY = col.scale.y
 	colliderPosLockY = col.position.y
 	
@@ -209,17 +213,23 @@ func _process(_delta):
 			anim.speed_scale = 1
 			anim.play("death")
 			_setHitbox("death")
+			animKey.visible = false
 			death = false
 		return
 
 	# Flip sprite
 	if rightHold:
 		anim.scale.x = animScaleLock.x
+		animKey.scale.x = animScaleLock.x
+		animKey.position.x = keyPosLockX
 	if leftHold:
 		anim.scale.x = animScaleLock.x * -1
+		animKey.scale.x = animScaleLock.x * -1
+		animKey.position.x = -keyPosLockX
 	
 	# Run & idle
 	if run and idle and !dashing and !crouching:
+		animKey.play("default")
 		if abs(velocity.x) > 0.1 and is_on_floor():
 			anim.speed_scale = abs(velocity.x / maxSpeed)
 			anim.play("run")

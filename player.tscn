@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://ba2aoclpcasxr"]
+[gd_scene load_steps=35 format=3 uid="uid://ba2aoclpcasxr"]
 
 [ext_resource type="Script" uid="uid://b3aygmhvgn28f" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bqc4rk6dt6qx6" path="res://assets/sprites/clock-guy-main.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bg1heyqla43a1" path="res://assets/sprites/clock-key.png" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(72, 108)
@@ -158,6 +159,70 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("3_i3pqv")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtqh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pylmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbfsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tmop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ahtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "IdleCollider", "RunCollider", "JumpCollider", "DeathCollider")]
 script = ExtResource("1_onrkg")
 PlayerSprite = NodePath("Sprite")
@@ -177,34 +242,40 @@ death = true
 visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_onrkg")
-debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
 
 [node name="CollideJump" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_hqtel")
 disabled = true
-debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
 
 [node name="CollideRun" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_i3pqv")
 disabled = true
-debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
 
 [node name="CollideDeath" type="CollisionShape2D" parent="."]
 position = Vector2(19, 17)
-rotation = 1.5707964
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_onrkg")
 disabled = true
-debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"death"
+animation = &"run"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
+frame = 5
 offset = Vector2(-1, 0)
+
+[node name="Key" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -13)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qtqh7")
+frame = 1
+frame_progress = 0.0162112
