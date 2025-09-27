@@ -137,12 +137,16 @@ func _ready():
 func die():
 	dead = true
 
-func _on_Area2D_body_entered(body):
-	if body.has_method("interact"):
-		interactable = body
+func _on_interact_box_area_entered(area):
+	if area.has_method("highlight"):
+		area.highlight(true)
+	if area.has_method("interact"):
+		interactable = area
 
-func _on_Area2D_body_exited(body):
-	if interactable == body:
+func _on_interact_box_area_exited(area):
+	if area.has_method("interact"):
+		area.highlight(false)
+	if interactable == area:
 		interactable = null
 
 func _input(event):
@@ -258,7 +262,6 @@ func _process(_delta):
 		_setHitbox("jump")
 	if velocity.y > 40 and falling and !dashing and !crouching:
 		anim.play("falling")
-		_setHitbox("falling")
 		
 	# crouch
 	if crouching:
@@ -487,6 +490,7 @@ func _coyoteTime():
 	jumpCount += -1
 
 func _setHitbox(hitbox: String):
+	pass
 	col.disabled = true
 	col.visible = false
 	match hitbox:

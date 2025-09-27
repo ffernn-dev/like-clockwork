@@ -1,5 +1,79 @@
-[gd_scene format=3 uid="uid://c4u1i1ywalu18"]
+[gd_scene load_steps=12 format=3 uid="uid://c4u1i1ywalu18"]
+
+[ext_resource type="Texture2D" uid="uid://dqav028h25rbo" path="res://assets/sprites/lever-sheet.png" id="1_2x236"]
+[ext_resource type="Script" uid="uid://d2huao147pasv" path="res://components/puzzle_objects/lever.gd" id="1_err4k"]
+[ext_resource type="Shader" uid="uid://ce4xgwxahoisw" path="res://outline.gdshader" id="1_jyk0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_err4k"]
+size = Vector2(88, 154)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_err4k"]
+shader = ExtResource("1_jyk0u")
+shader_parameter/color = Color(0.9, 0.78, 0.67499995, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyk0u"]
+atlas = ExtResource("1_2x236")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_err4k"]
+atlas = ExtResource("1_2x236")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa4sj"]
+atlas = ExtResource("1_2x236")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww2c4"]
+atlas = ExtResource("1_2x236")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yw6v"]
+atlas = ExtResource("1_2x236")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7h37g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyk0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_err4k")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_pa4sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww2c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yw6v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Lever" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+script = ExtResource("1_err4k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_err4k")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_err4k")
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_7h37g")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

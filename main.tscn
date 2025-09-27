@@ -1,23 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://m00nbcfqtyym"]
+[gd_scene load_steps=7 format=4 uid="uid://m00nbcfqtyym"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://ckfr7v0ga6kip" path="res://assets/sprites/floor-basic-ahh(64x64).png" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="3_h2yge"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
+resource_name = "Floor"
+texture = ExtResource("2_0xm2m")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(2215.5, 135)
+[sub_resource type="TileSet" id="TileSet_ig7tw"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0xm2m")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+fog_enabled = true
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAAYAAAADAAAAAAADAAYAAAAJAAAAAAAEAAYAAAAJAAAAAAAFAAYAAAAJAAAAAAAGAAYAAAAJAAAAAAAHAAYAAAAJAAAAAAAIAAYAAAABAAAAAAABAAYAAAADAAAAAAAAAAYAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_ig7tw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1028, 760)
-shape = SubResource("RectangleShape2D_ig7tw")
+[node name="Lever" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(309, 303)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1218, 1583)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_ig7tw")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
