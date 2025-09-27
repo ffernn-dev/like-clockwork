@@ -5,7 +5,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(1192.5, 135)
+size = Vector2(2215.5, 135)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -14,10 +14,10 @@ script = ExtResource("1_0xm2m")
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575.25, 568)
+position = Vector2(1028, 760)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(792, 1049)
+position = Vector2(1218, 1583)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ig7tw")

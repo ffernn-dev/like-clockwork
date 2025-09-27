@@ -1,31 +1,210 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba2aoclpcasxr"]
+[gd_scene load_steps=25 format=3 uid="uid://ba2aoclpcasxr"]
 
-[ext_resource type="Texture2D" uid="uid://cwsy3v821h5sd" path="res://icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://kt22aiygmb4v" path="res://UltimatePlatformerController.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://b3aygmhvgn28f" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bqc4rk6dt6qx6" path="res://assets/sprites/clock-guy-main.png" id="2_onrkg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-size = Vector2(76, 76)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(72, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(72, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(72, 104)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 36.0
+height = 84.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4flbx")
+"texture": SubResource("AtlasTexture_nvl01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivps1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urp6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwjto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_606se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1c27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7ga")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q13i1")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "IdleCollider", "RunCollider", "JumpCollider", "DeathCollider")]
 script = ExtResource("1_onrkg")
 PlayerSprite = NodePath("Sprite")
-PlayerCollider = NodePath("CollisionBox")
-timeToReachZeroSpeed = 1.0
+IdleCollider = NodePath("CollideIdle")
+RunCollider = NodePath("CollideRun")
+JumpCollider = NodePath("CollideJump")
+DeathCollider = NodePath("CollideDeath")
+maxSpeed = 300.0
+timeToReachZeroSpeed = 0.1
+directionalSnap = true
+run = true
+jump = true
+idle = true
+death = true
 
-[node name="CollisionBox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4flbx")
+[node name="CollideIdle" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_onrkg")
+debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+
+[node name="CollideJump" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_hqtel")
+disabled = true
+debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+
+[node name="CollideRun" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_i3pqv")
+disabled = true
+debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
+
+[node name="CollideDeath" type="CollisionShape2D" parent="."]
+position = Vector2(19, 17)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_onrkg")
+disabled = true
+debug_color = Color(0.6719704, 0.4957735, 0.32149506, 0.41960785)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.6, 0.6)
+position = Vector2(0, -12)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_onrkg")
+animation = &"death"
+autoplay = "idle"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(-1, 0)
