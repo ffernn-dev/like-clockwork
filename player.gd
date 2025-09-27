@@ -137,7 +137,7 @@ func _ready():
 func die():
 	dead = true
 	$Sprite/PointLight2D.enabled = false
-	$sprite/PointLight2D2.enabled = false
+	$Sprite/PointLight2D2.enabled = false
 	$InteractBox.monitoring = false
 
 func _on_interact_box_area_entered(area):
