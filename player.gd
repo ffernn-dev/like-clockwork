@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player2D
 
+signal died(graceful: bool)
+
 @export var README: String = "IMPORTANT: MAKE SURE TO ASSIGN 'left' 'right' 'jump' 'dash' 'up' 'down' in the project settings input map."
 
 #INFO READEME 
@@ -124,6 +126,8 @@ var downTap
 
 var dead
 
+var currentTilemap: TileMapLayer
+
 var interactable : Node = null
 
 func _ready():
@@ -134,8 +138,9 @@ func _ready():
 	col = IdleCollider
 	_updateData()
 
-func die():
+func die(graceful: bool):
 	dead = true
+	emit_signal("died", graceful)
 	$Sprite/PointLight2D.enabled = false
 	$Sprite/PointLight2D2.enabled = false
 	$InteractBox.monitoring = false
@@ -553,3 +558,7 @@ func _endGroundPound():
 
 func _placeHolder():
 	print("")
+
+func _on_hurt_box_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body is TileMapLayer:
+		die(false)

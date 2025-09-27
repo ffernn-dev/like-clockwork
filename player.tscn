@@ -225,8 +225,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
-radius = 57.0
-height = 178.0
+radius = 39.0
+height = 130.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "IdleCollider", "RunCollider", "JumpCollider", "DeathCollider")]
 script = ExtResource("1_onrkg")
@@ -244,7 +244,6 @@ idle = true
 death = true
 
 [node name="CollideIdle" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_onrkg")
 debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
@@ -274,9 +273,8 @@ debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
 position = Vector2(0, -12)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
 offset = Vector2(-1, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite"]
@@ -306,5 +304,13 @@ monitorable = false
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_i3pqv")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_i3pqv")
+
 [connection signal="area_entered" from="InteractBox" to="." method="_on_interact_box_area_entered"]
 [connection signal="area_exited" from="InteractBox" to="." method="_on_interact_box_area_exited"]
+[connection signal="body_shape_entered" from="HurtBox" to="." method="_on_hurt_box_body_shape_entered"]
