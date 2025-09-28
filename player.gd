@@ -125,6 +125,7 @@ var dashTap
 var downTap
 
 var dead
+var decay_state = 0
 
 var currentTilemap: TileMapLayer
 
@@ -559,3 +560,12 @@ func _placeHolder():
 func _on_hurt_box_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMapLayer and not dead:
 		die(false)
+
+func decay():
+	if dead:
+		decay_state += 1
+	
+	if decay_state == 2:
+		anim.play("death2")
+	if decay_state == 3:
+		anim.play("death3")

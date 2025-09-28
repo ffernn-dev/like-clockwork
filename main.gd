@@ -82,6 +82,8 @@ func spawn_player():
 	if dead_players.size() > 3:
 		dead_players[0].call_deferred("queue_free")
 		dead_players.pop_front()
+	for corpse in dead_players:
+		corpse.decay()
 	player = player_scene.instantiate()
 	add_child(player)
 	player.position = current_level.player_spawn_pos

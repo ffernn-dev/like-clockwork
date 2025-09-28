@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://ba2aoclpcasxr"]
+[gd_scene load_steps=40 format=3 uid="uid://ba2aoclpcasxr"]
 
 [ext_resource type="Script" uid="uid://b3aygmhvgn28f" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bqc4rk6dt6qx6" path="res://assets/sprites/clock-guy-main.png" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bg1heyqla43a1" path="res://assets/sprites/clock-key.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cpolo8qy3xtud" path="res://assets/sprites/clock-decay.png" id="3_sweqy"]
 [ext_resource type="Texture2D" uid="uid://cndymau5ysw2i" path="res://assets/lights/EyeLight.png" id="4_hqtel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -45,6 +46,14 @@ region = Rect2(672, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuci"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("2_onrkg")
@@ -113,6 +122,22 @@ animations = [{
 "loop": false,
 "name": &"death",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqh7")
+}],
+"loop": false,
+"name": &"death2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wuci")
+}],
+"loop": false,
+"name": &"death3",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -275,18 +300,20 @@ debug_color = Color(0.67197, 0.495773, 0.321495, 0.419608)
 position = Vector2(0, -12)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"idle"
+animation = &"death3"
 autoplay = "idle"
 offset = Vector2(-1, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite"]
-position = Vector2(12, -2.5)
-scale = Vector2(0.25, 0.25)
+position = Vector2(20, -3.25)
+scale = Vector2(0.5, 0.5)
+energy = 0.5
 texture = ExtResource("4_hqtel")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Sprite"]
-position = Vector2(3, -2.5)
-scale = Vector2(0.25, 0.25)
+position = Vector2(11, -2.5)
+scale = Vector2(0.5, 0.5)
+energy = 0.5
 texture = ExtResource("4_hqtel")
 
 [node name="Key" type="AnimatedSprite2D" parent="."]
