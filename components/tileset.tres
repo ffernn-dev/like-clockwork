@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d2fa2ymdbyltv"]
 
-[ext_resource type="Texture2D" uid="uid://cj77r6f7y5jni" path="res://assets/sprites/tilemap2_big.png" id="1_k8ble"]
+[ext_resource type="Texture2D" uid="uid://c5mxylcuskbsv" path="res://assets/sprites/bigfinalfloor-basic-ahhaseprite-Sheeproperfinat.png" id="1_k8ble"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 resource_name = "Floor"
@@ -42,6 +42,9 @@ texture_region_size = Vector2i(64, 64)
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:3/0 = 0
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
 [resource]
 tile_size = Vector2i(64, 64)
