@@ -1,9 +1,18 @@
-class_name Lever extends "res://components/Interactable.gd"
+class_name Lever extends "res://components/interactable.gd"
 
 signal toggled(state: bool)
 
 var active := false
 @onready var anim := $Sprite
+
+func _ready():
+	EventBus.player_died.connect(reset)
+	
+func reset(graceful):
+	if active:
+		anim.play_backwards("default")
+	active = false
+	emit_signal("toggled", active)
 
 func interact(actor):
 	if active:

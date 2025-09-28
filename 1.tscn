@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://b0ldqkm6vj5c8"]
+[gd_scene load_steps=6 format=4 uid="uid://b12cmivgxpnmp"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]

@@ -37,8 +37,8 @@ func _on_player_died(graceful) -> void:
 func restart_level() -> void:
 	for i in dead_players:
 		i.call_deferred("queue_free")
-	#  reload current scene
+	# reload current scene
 	var current := get_tree().current_scene
 	var path := current.scene_file_path
-	get_tree().change_scene_to_file(path)
+	get_tree().call_deferred("change_scene_to_file", path)
 		

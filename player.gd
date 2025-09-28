@@ -141,6 +141,7 @@ func _ready():
 func die(graceful: bool):
 	dead = true
 	emit_signal("died", graceful)
+	EventBus.player_died.emit(graceful)
 	$Sprite/PointLight2D.enabled = false
 	$Sprite/PointLight2D2.enabled = false
 	$InteractBox.monitoring = false
