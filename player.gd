@@ -221,6 +221,7 @@ func _process(_delta):
 	if dead:
 		if death:
 			anim.speed_scale = 1
+			$DeathSound.play()
 			anim.play("death")
 			_setHitbox("death")
 			animKey.visible = false
