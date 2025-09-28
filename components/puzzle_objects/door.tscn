@@ -82,6 +82,7 @@ autoplay = "locked"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 26)
 shape = SubResource("RectangleShape2D_20bt6")
+disabled = true
 
 [node name="InteractBox" type="Area2D" parent="."]
 collision_layer = 2
