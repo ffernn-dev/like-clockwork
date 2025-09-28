@@ -22,3 +22,30 @@ lever = NodePath("../Lever")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(136, 765)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 599.0
+offset_right = 530.0
+offset_bottom = 622.0
+text = "Dying by pressing C lets you create up to three corpses"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 413.0
+offset_bottom = 283.0
+scale = Vector2(2, 2)
+text = "Z = Jump
+X = Interact
+C = Die
+Move with arrow keys"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 867.0
+offset_top = 595.0
+offset_right = 1111.0
+offset_bottom = 644.0
+text = "Less graceful deaths 
+destroy all corpses on screen"
+horizontal_alignment = 1
