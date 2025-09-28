@@ -17,12 +17,14 @@ func _ready():
 func open(without_key := false):
 	if leverless or not without_key:
 		anim.play("open")
+		state = true
 	
 
 func close(without_key := false):
 	if leverless or not without_key:
 		closing = true
 		anim.play_backwards("open")
+		state = false
 
 
 func _on_sprite_animation_finished():

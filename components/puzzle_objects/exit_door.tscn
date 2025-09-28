@@ -1,8 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsocu3pgododp"]
+[gd_scene load_steps=15 format=3 uid="uid://dsocu3pgododp"]
 
 [ext_resource type="Texture2D" uid="uid://dsswu4odk5eux" path="res://assets/sprites/door(32x48p).png" id="1_20bt6"]
 [ext_resource type="Script" uid="uid://bmaoko4ubiv86" path="res://components/puzzle_objects/exit_door.gd" id="1_e17y1"]
+[ext_resource type="Shader" uid="uid://ce4xgwxahoisw" path="res://outline.gdshader" id="2_wv848"]
 [ext_resource type="Script" uid="uid://ikdsc2ydik53" path="res://components/puzzle_objects/door_interact_box.gd" id="3_clmxy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ets8n"]
+shader = ExtResource("2_wv848")
+shader_parameter/color = Color(0.9, 0.78, 0.67499995, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jtxk"]
 atlas = ExtResource("1_20bt6")
@@ -75,10 +85,13 @@ script = ExtResource("1_e17y1")
 anim = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ets8n")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2jtxk")
 animation = &"open"
 autoplay = "locked"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 26)

@@ -1,6 +1,7 @@
 class_name Door extends Node2D
 
 @export var anim: AnimatedSprite2D
+var state = false
 
 func _ready():
 	if not anim:

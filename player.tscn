@@ -229,6 +229,7 @@ radius = 39.0
 height = 130.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "IdleCollider", "RunCollider", "JumpCollider", "DeathCollider")]
+collision_layer = 3
 script = ExtResource("1_onrkg")
 PlayerSprite = NodePath("Sprite")
 IdleCollider = NodePath("CollideIdle")
