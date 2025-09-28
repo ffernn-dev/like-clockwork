@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmh5i3ppsl2cx"]
+
+[ext_resource type="Texture2D" uid="uid://dgfllmhij3tje" path="res://assets/sprites/enemy(32x32).png" id="1_weymy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weymy"]
+atlas = ExtResource("1_weymy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hmry"]
+atlas = ExtResource("1_weymy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m686"]
+atlas = ExtResource("1_weymy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh1cb"]
+atlas = ExtResource("1_weymy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0smbh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weymy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hmry")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m686")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh1cb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_weymy"]
+radius = 31.0
+height = 98.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_weymy"]
+radius = 48.010414
+
+[node name="JumpSaw" type="CharacterBody2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0smbh")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.6855289
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 22)
+shape = SubResource("CapsuleShape2D_weymy")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_weymy")
+disabled = true
