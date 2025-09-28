@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp3n5hg8odcdw"]
+[gd_scene load_steps=10 format=3 uid="uid://dp3n5hg8odcdw"]
 
 [ext_resource type="Script" uid="uid://b0x7y42nv8b3v" path="res://components/puzzle_objects/button_door.gd" id="1_u6085"]
 [ext_resource type="Texture2D" uid="uid://s4qsy8rmdqho" path="res://assets/sprites/button-door(48x16)-Sheet.png" id="2_o6uu0"]
@@ -51,6 +51,9 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6uu0"]
+size = Vector2(16, 168)
+
 [node name="ButtonDoor" type="Node2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_u6085")
 anim = NodePath("Sprite")
@@ -60,5 +63,8 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_y81kd")
 animation = &"open"
 autoplay = "closed"
-frame = 3
-frame_progress = 1.0
+
+[node name="Collider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("RectangleShape2D_o6uu0")

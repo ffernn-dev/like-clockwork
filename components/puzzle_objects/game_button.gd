@@ -7,6 +7,8 @@ var active := false
 @onready var collider = $StaticBody2D
 
 func interact(actor, state = false):
+	if state == active:
+		return
 	active = state
 	if active:
 		anim.play("pressed")
