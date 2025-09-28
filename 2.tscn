@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://tf4v0s5k57gs"]
+[gd_scene load_steps=14 format=4 uid="uid://tf4v0s5k57gs"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
@@ -10,6 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://ce4i0wt1k65rk" path="res://components/puzzle_objects/game_button.tscn" id="9_5mfaa"]
 [ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="10_7eokq"]
 [ext_resource type="PackedScene" uid="uid://dp3n5hg8odcdw" path="res://components/puzzle_objects/button_door.tscn" id="10_xxyub"]
+[ext_resource type="Texture2D" uid="uid://buklposexhif" path="res://assets/sprites/background-resources-Sheet-big.png" id="11_7eokq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qdt5h"]
+texture = ExtResource("11_7eokq")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1qnog"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_qdt5h")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -50,3 +64,7 @@ button = NodePath("../GameButton")
 [node name="ExitDoor" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("10_7eokq")]
 position = Vector2(956, 672)
 lever = NodePath("../Lever")
+
+[node name="BackgroundObjects" type="TileMapLayer" parent="."]
+position = Vector2(1285, 540)
+tile_set = SubResource("TileSet_1qnog")

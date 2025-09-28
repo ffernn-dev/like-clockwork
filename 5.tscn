@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=4 uid="uid://l1e0rooqttku"]
+[gd_scene load_steps=9 format=4 uid="uid://l1e0rooqttku"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_eukqi"]
 [ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="4_eukqi"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://buklposexhif" path="res://assets/sprites/background-resources-Sheet-big.png" id="6_dm7sg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_435ve"]
+texture = ExtResource("6_dm7sg")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7ga31"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_435ve")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -23,3 +37,6 @@ position = Vector2(1790, 672)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(517, 722)
+
+[node name="BackgroundObjects" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_7ga31")

@@ -1,12 +1,26 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3cjeak58mxe1"]
+[gd_scene load_steps=11 format=4 uid="uid://c3cjeak58mxe1"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_eukqi"]
 [ext_resource type="Texture2D" uid="uid://yh6biern7sp3" path="res://assets/sprites/lever copy-Sheet.png" id="3_p565q"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" path="res://components/puzzle_objects/exit_door.tscn" id="5_p565q"]
+[ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="5_p565q"]
 [ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="7_48hau"]
+[ext_resource type="Texture2D" uid="uid://buklposexhif" path="res://assets/sprites/background-resources-Sheet-big.png" id="8_48hau"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1r778"]
+texture = ExtResource("8_48hau")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_113jv"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_1r778")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -34,3 +48,7 @@ position = Vector2(634, 735)
 
 [node name="Lever" parent="." instance=ExtResource("7_48hau")]
 position = Vector2(1756, 297)
+
+[node name="BackgroundObjects" type="TileMapLayer" parent="."]
+position = Vector2(1285, 540)
+tile_set = SubResource("TileSet_113jv")
