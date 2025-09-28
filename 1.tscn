@@ -14,7 +14,8 @@
 blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_cckd2"]
-colors = PackedColorArray(0.7194502, 0.51519895, 0.23661906, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.13928571, 1)
+colors = PackedColorArray(0.6, 0.43250003, 0.198, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rr1cv"]
 gradient = SubResource("Gradient_cckd2")

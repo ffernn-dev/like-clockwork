@@ -22,6 +22,8 @@ var loaded = false
 var current_level: Node
 var current_level_idx: int
 
+var death_disabled = false
+
 func _ready():
 	set_process(false)
 	
@@ -34,22 +36,33 @@ func _load():
 		ResourceLoader.load_threaded_request(level)
 	set_process(true)
 
-func _start_level(level: String):
-	await fade_out(0.5)
+func _start_level(level: String, fade = true):
+	if death_disabled:
+		return
+	death_disabled = true
+	print(death_disabled)
+	if fade:
+		await fade_out(0.5)
+	print(death_disabled)
 	if current_level:
 		current_level.queue_free()
 	
 	# Pull the existing PackedScene, not reload
+	print("1. getting level from dictionary")
 	var packed: PackedScene = level_resources.get(level, null)
 	if packed == null:
 		push_error("Level not found in resources: " + level)
 		return
-
+	
+	print("2. instancing")
 	var new_level = packed.instantiate()
 	call_deferred("_finalize_start_level", new_level)
-	await fade_in(0.5)
+	if fade:
+		await fade_in(0.5)
+	death_disabled = false
 
 func _finalize_start_level(new_level: Node):
+	print("3. adding child")
 	add_child(new_level)
 	move_child(new_level, 0)
 	current_level = new_level
@@ -83,9 +96,9 @@ func _process(_delta):
 		if all_done:
 			print("All levels loaded!")
 			loaded = true
-			await get_tree().create_timer(2.6).timeout
+			#await get_tree().create_timer(2.6).timeout
 			$Loading.queue_free()
-			_start_level(levels[current_level_idx])
+			_start_level(levels[current_level_idx], false)
 
 func spawn_player():
 	if dead_players.size() > 3:
@@ -99,9 +112,10 @@ func spawn_player():
 	player.died.connect(_on_player_died)
 
 func kill_player():
-	player.die(true)
-	dead_players.append(player)
-	spawn_player()
+	if not death_disabled and player:
+		player.die(true)
+		dead_players.append(player)
+		spawn_player()
 
 func _input(event):
 	if event.is_action_pressed("die"):
