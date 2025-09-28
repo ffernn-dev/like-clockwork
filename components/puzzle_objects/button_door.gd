@@ -16,12 +16,14 @@ func _ready():
 func open(without_key := false):
 	if buttonless or not without_key:
 		anim.play("open")
+		$Collider/CollisionShape2D.disabled = true
 	
 
 func close(without_key := false):
 	if buttonless or not without_key:
 		closing = true
 		anim.play_backwards("open")
+		$Collider/CollisionShape2D.disabled = false
 
 
 func _on_sprite_animation_finished():

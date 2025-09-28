@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cdkgymljncdj1" path="res://assets/sprites/button-sign.png" id="6_5iwlv"]
-[ext_resource type="PackedScene" path="res://components/puzzle_objects/game_button.tscn" id="9_5mfaa"]
-[ext_resource type="PackedScene" path="res://components/puzzle_objects/exit_door.tscn" id="10_7eokq"]
-[ext_resource type="PackedScene" path="res://components/puzzle_objects/button_door.tscn" id="10_xxyub"]
+[ext_resource type="PackedScene" uid="uid://ce4i0wt1k65rk" path="res://components/puzzle_objects/game_button.tscn" id="9_5mfaa"]
+[ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="10_7eokq"]
+[ext_resource type="PackedScene" uid="uid://dp3n5hg8odcdw" path="res://components/puzzle_objects/button_door.tscn" id="10_xxyub"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
