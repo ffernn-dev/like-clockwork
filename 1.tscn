@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://b12cmivgxpnmp"]
 
-[ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://c41vvx1ejgrdn" path="res://level.gd" id="1_e348n"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://buklposexhif" path="res://assets/sprites/background-resources-Sheet-big.png" id="2_cckd2"]
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_tc3pe"]
@@ -30,7 +30,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_rr1cv")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_0xm2m")
+script = ExtResource("1_e348n")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(1285, 540)

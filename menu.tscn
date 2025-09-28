@@ -7,3 +7,13 @@
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_lti8b")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1304.0
+offset_top = 843.00006
+offset_right = 1749.0
+offset_bottom = 936.00006
+rotation = -0.20245819
+theme_override_font_sizes/font_size = 32
+text = "ts was NOT vibe coded
+REAL developer tears inside!!"

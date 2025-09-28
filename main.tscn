@@ -1,27 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://m00nbcfqtyym"]
+[gd_scene load_steps=3 format=3 uid="uid://m00nbcfqtyym"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" path="res://Loading.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
-[node name="StaticLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAAYAAQAEAAIAAAADAAYAAQAEAAIAAAAEAAYAAQAEAAIAAAAFAAYAAQAEAAIAAAAGAAYAAQAEAAIAAAAHAAYAAQAEAAIAAAABAAYAAQAEAAIAAAAAAAYAAQADAAEAAAAJAAYAAQAEAAMAAAAMAAYAAQADAAEAAAANAAYAAQAEAAIAAAAOAAYAAQAEAAIAAAALAAYAAQABAAEAAAAKAAYAAQABAAEAAAAIAAUAAQAAAAAAAAAIAAYAAQAEAAMAAAA=")
-tile_set = ExtResource("2_1bvp3")
-
-[node name="Lever" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(309, 303)
-
-[node name="Door" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("4_1bvp3")]
-position = Vector2(909, 288)
-lever = NodePath("../Lever")
-
-[node name="Door2" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(50, 288)
-
-[node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(189, 187)
+[node name="Loading" parent="." instance=ExtResource("3_h2yge")]

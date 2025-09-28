@@ -27,7 +27,6 @@ signal died(graceful: bool)
 #INFO JUMPING 
 @export_category("Jumping and Gravity")
 @export_range(0, 20) var jumpHeight: float = 2.0
-@export_range(0, 4) var jumps: int = 1
 @export_range(0, 100) var gravityScale: float = 20.0
 @export_range(0, 1000) var terminalVelocity: float = 500.0
 @export_range(0.5, 3) var descendingGravityFactor: float = 1.3
@@ -168,7 +167,6 @@ func _updateData():
 	deceleration = -maxSpeed / timeToReachZeroSpeed
 	
 	jumpMagnitude = (10.0 * jumpHeight) * gravityScale
-	jumpCount = jumps
 	
 	dashMagnitude = maxSpeed * dashLength
 	dashCount = dashes
@@ -195,10 +193,6 @@ func _updateData():
 		instantStop = false
 	else:
 		instantStop = false
-		
-	if jumps > 1:
-		jumpBuffering = 0
-		coyoteTime = 0
 	
 	coyoteTime = abs(coyoteTime)
 	jumpBuffering = abs(jumpBuffering)
@@ -389,34 +383,25 @@ func _physics_process(delta):
 	if shortHopAkaVariableJumpHeight and jumpRelease and velocity.y < 0:
 		velocity.y = velocity.y / 2
 	
-	if jumps == 1:
-		# Coyote time
-		if !is_on_floor():
-			if coyoteTime > 0:
-				coyoteActive = true
-				_coyoteTime()
-		# Jump presses
-		if jumpTap:
-			if coyoteActive:
-				coyoteActive = false
-				_jump()
-			if jumpBuffering > 0:
-				jumpWasPressed = true
-				_bufferJump()
-			elif jumpBuffering == 0 and coyoteTime == 0 and is_on_floor():
-				_jump()
-		if is_on_floor():
-			jumpCount = jumps
+	# Coyote time
+	if !is_on_floor():
+		if coyoteTime > 0:
 			coyoteActive = true
-			if jumpWasPressed:
-				_jump()
-	elif jumps > 1:
-		if is_on_floor():
-			jumpCount = jumps
-		if jumpTap and jumpCount > 0:
-			velocity.y = -jumpMagnitude
-			jumpCount -= 1
-			_endGroundPound()
+			_coyoteTime()
+	# Jump presses
+	if jumpTap:
+		if coyoteActive:
+			coyoteActive = false
+			_jump()
+		if jumpBuffering > 0:
+			jumpWasPressed = true
+			_bufferJump()
+		elif jumpBuffering == 0 and coyoteTime == 0 and is_on_floor():
+			_jump()
+	if is_on_floor():
+		coyoteActive = true
+		if jumpWasPressed:
+			_jump()
 	
 	# --- DASHING ---
 	if is_on_floor():
@@ -504,7 +489,6 @@ func _bufferJump():
 func _coyoteTime():
 	await get_tree().create_timer(coyoteTime).timeout
 	coyoteActive = false
-	jumpCount += -1
 
 func _setHitbox(hitbox: String):
 	pass
@@ -527,10 +511,8 @@ func _setHitbox(hitbox: String):
 	col.visible = true
 	
 func _jump():
-	if jumpCount > 0:
-		velocity.y = -jumpMagnitude
-		jumpCount += -1
-		jumpWasPressed = false
+	velocity.y = -jumpMagnitude
+	jumpWasPressed = false
 
 func _inputPauseReset(time):
 	await get_tree().create_timer(time).timeout

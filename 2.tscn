@@ -1,6 +1,6 @@
+
 [gd_scene load_steps=14 format=4 uid="uid://tf4v0s5k57gs"]
 
-[ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_e5jh0"]
 [ext_resource type="Texture2D" uid="uid://yh6biern7sp3" path="res://assets/sprites/lever copy-Sheet.png" id="3_5mfaa"]
@@ -26,7 +26,6 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_qdt5h")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_0xm2m")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(962, 540)
