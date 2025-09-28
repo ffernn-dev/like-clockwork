@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://l1e0rooqttku"]
+[gd_scene load_steps=12 format=4 uid="uid://l1e0rooqttku"]
 
-[ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://c41vvx1ejgrdn" path="res://level.gd" id="1_7ga31"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_eukqi"]
 [ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="4_eukqi"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://buklposexhif" path="res://assets/sprites/background-resources-Sheet-big.png" id="6_dm7sg"]
 [ext_resource type="PackedScene" uid="uid://cmh5i3ppsl2cx" path="res://components/enemies/jump_saw.tscn" id="7_435ve"]
+[ext_resource type="Texture2D" uid="uid://b227yaalege2n" path="res://assets/sprites/fire.png" id="8_7ga31"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_435ve"]
 texture = ExtResource("6_dm7sg")
@@ -21,8 +22,12 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_435ve")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ga31"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [node name="Main" type="Node2D"]
-script = ExtResource("1_0xm2m")
+script = ExtResource("1_7ga31")
 
 [node name="BG" type="Sprite2D" parent="."]
 modulate = Color(0.85, 0.85, 0.85, 1)
@@ -44,3 +49,12 @@ tile_set = SubResource("TileSet_7ga31")
 
 [node name="JumpSaw" parent="." instance=ExtResource("7_435ve")]
 position = Vector2(158, 764)
+
+[node name="Fire" type="Sprite2D" parent="."]
+position = Vector2(1216, 928)
+scale = Vector2(4, 4)
+texture = ExtResource("8_7ga31")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_7ga31")
