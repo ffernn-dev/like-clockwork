@@ -52,6 +52,9 @@ func _finalize_start_level(new_level: Node):
 	spawn_player()
 
 func _on_level_complete():
+	if current_level_idx == 4:
+		get_tree().change_scene_to_file("res://done.tscn")
+		return
 	_clear_players()
 	current_level_idx = (current_level_idx + 1) % levels.size()
 	_start_level(levels[current_level_idx])
@@ -75,6 +78,7 @@ func _process(_delta):
 		if all_done:
 			print("All levels loaded!")
 			loaded = true
+			await get_tree().create_timer(3).timeout
 			$Loading.queue_free()
 			_start_level(levels[0])
 

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://fd1ed0dfun3k"]
+
+[node name="Done" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 709.0
+offset_top = 443.0
+offset_right = 1150.0
+offset_bottom = 536.0
+theme_override_font_sizes/font_size = 32
+text = "Thanks for playing the demo
+love you bye mwah!"
+horizontal_alignment = 1

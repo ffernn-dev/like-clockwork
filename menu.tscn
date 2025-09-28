@@ -1,6 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0eorf3urstsr"]
+[gd_scene load_steps=7 format=3 uid="uid://b0eorf3urstsr"]
 
 [ext_resource type="Texture2D" uid="uid://dukj72qe0ryqo" path="res://assets/art/MENU.jpg" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://brg7hmslie51l" path="res://start_button.gd" id="2_ouk20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
+bg_color = Color(0.41962677, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 24.0
+expand_margin_top = 18.0
+expand_margin_right = 24.0
+expand_margin_bottom = 18.0
+shadow_size = 30
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lti8b"]
+bg_color = Color(0.41962677, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 24.0
+expand_margin_top = 18.0
+expand_margin_right = 24.0
+expand_margin_bottom = 18.0
+shadow_size = 30
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
+bg_color = Color(0.14189738, 8.204789e-07, 4.632585e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41960785, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 24.0
+expand_margin_top = 18.0
+expand_margin_right = 24.0
+expand_margin_bottom = 18.0
+shadow_size = 30
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="Theme" id="Theme_ouk20"]
+Button/styles/hover = SubResource("StyleBoxFlat_mae5d")
+Button/styles/normal = SubResource("StyleBoxFlat_lti8b")
+Button/styles/pressed = SubResource("StyleBoxFlat_ouk20")
 
 [node name="Menu" type="Node2D"]
 
@@ -17,3 +77,34 @@ rotation = -0.20245819
 theme_override_font_sizes/font_size = 32
 text = "ts was NOT vibe coded
 REAL developer tears inside!!"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = 23.0
+offset_right = 294.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ouk20")
+theme_override_font_sizes/font_size = 48
+text = "Imbue a small clockwork
+ robot with a soul"
+script = ExtResource("2_ouk20")
+
+[connection signal="pressed" from="Control/Button" to="Control/Button" method="_on_pressed"]

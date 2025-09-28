@@ -265,6 +265,7 @@ maxSpeed = 300.0
 timeToReachZeroSpeed = 0.1
 directionalSnap = true
 jumpHeight = 2.4
+coyoteTime = 0.1
 run = true
 jump = true
 idle = true
