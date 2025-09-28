@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var transition_rect := $CanvasLayer/TransitionRect
+
 const player_scene := preload("res://player.tscn")
 var dead_players = []
 var player: Player2D
@@ -24,7 +26,7 @@ func _ready():
 	set_process(false)
 	
 	_load()
-	current_level_idx = 4
+	current_level_idx = 0
 	EventBus.level_complete.connect(_on_level_complete)
 
 func _load():
@@ -33,6 +35,7 @@ func _load():
 	set_process(true)
 
 func _start_level(level: String):
+	await fade_out(0.5)
 	if current_level:
 		current_level.queue_free()
 	
@@ -44,7 +47,7 @@ func _start_level(level: String):
 
 	var new_level = packed.instantiate()
 	call_deferred("_finalize_start_level", new_level)
-
+	await fade_in(0.5)
 
 func _finalize_start_level(new_level: Node):
 	add_child(new_level)
@@ -121,3 +124,15 @@ func _clear_players():
 func restart_level() -> void:
 	_clear_players()
 	_start_level(levels[current_level_idx])
+
+func fade_out(dur: float) -> void:
+	transition_rect.visible = true
+	var t := create_tween()
+	t.tween_property(transition_rect, "modulate:a", 1.0, dur)
+	await t.finished
+
+func fade_in(dur: float) -> void:
+	var t := create_tween()
+	t.tween_property(transition_rect, "modulate:a", 0.0, dur)
+	await t.finished
+	transition_rect.visible = false

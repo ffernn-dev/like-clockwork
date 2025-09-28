@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b12cmivgxpnmp"]
+[gd_scene load_steps=16 format=4 uid="uid://b12cmivgxpnmp"]
 
 [ext_resource type="Script" uid="uid://c41vvx1ejgrdn" path="res://level.gd" id="1_e348n"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
@@ -9,6 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="6_sj4ut"]
 [ext_resource type="Shader" uid="uid://bt66c14ckww41" path="res://postprocess.gdshader" id="8_e348n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cckd2"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_cckd2"]
+colors = PackedColorArray(0.7194502, 0.51519895, 0.23661906, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rr1cv"]
+gradient = SubResource("Gradient_cckd2")
+fill = 1
+fill_from = Vector2(0.4871795, 0.47496948)
+fill_to = Vector2(0.83638585, 0.26251528)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cckd2"]
 shader = ExtResource("8_e348n")
@@ -36,6 +48,18 @@ script = ExtResource("1_e348n")
 modulate = Color(0.8509804, 0.8509804, 0.8509804, 1)
 position = Vector2(1285, 540)
 texture = ExtResource("2_tc3pe")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_cckd2")
+position = Vector2(-147, 373)
+amount = 20
+texture = SubResource("GradientTexture2D_rr1cv")
+lifetime = 30.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 238.59
+initial_velocity_max = 357.36
+scale_amount_min = 2.0
+scale_amount_max = 6.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_cckd2")
