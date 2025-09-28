@@ -10,7 +10,7 @@
 script = ExtResource("1_0xm2m")
 
 [node name="BG" type="Sprite2D" parent="."]
-position = Vector2(1285, 540)
+position = Vector2(708, 540)
 texture = ExtResource("2_eukqi")
 
 [node name="StaticLayer" type="TileMapLayer" parent="."]
@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AAAAABAAAQABAAIAAAABABAAAQADAAIAAAACABAAAQAEAAM
 tile_set = ExtResource("2_1bvp3")
 
 [node name="Door" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(1790, 670)
+position = Vector2(1789, 672)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(702, 691)
