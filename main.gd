@@ -24,7 +24,7 @@ func _ready():
 	set_process(false)
 	
 	_load()
-	current_level_idx = 0
+	current_level_idx = 4
 	EventBus.level_complete.connect(_on_level_complete)
 
 func _load():

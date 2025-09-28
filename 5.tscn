@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://l1e0rooqttku"]
+[gd_scene load_steps=19 format=4 uid="uid://l1e0rooqttku"]
 
 [ext_resource type="Script" uid="uid://c41vvx1ejgrdn" path="res://level.gd" id="1_7ga31"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://buklposexhif" path="res://assets/sprites/background-resources-Sheet-big.png" id="6_dm7sg"]
 [ext_resource type="PackedScene" uid="uid://cmh5i3ppsl2cx" path="res://components/enemies/jump_saw.tscn" id="7_435ve"]
 [ext_resource type="Texture2D" uid="uid://b227yaalege2n" path="res://assets/sprites/fire.png" id="8_7ga31"]
+[ext_resource type="Script" uid="uid://celwxikxp1urk" path="res://fire_hurt.gd" id="9_1j14s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_435ve"]
 texture = ExtResource("6_dm7sg")
@@ -22,9 +23,42 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_435ve")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ga31"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_7ga31"]
+offsets = PackedFloat32Array(0, 0.98942596)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1j14s"]
+gradient = SubResource("Gradient_7ga31")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8778999, 0.15995117)
+
+[sub_resource type="Gradient" id="Gradient_1j14s"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.2514535, 0.46947673, 0.7601744, 1)
+colors = PackedColorArray(0.23100002, 0.38115, 0.66, 1, 1, 1, 1, 1, 0.94, 0.12533332, 0, 1, 0.68, 0.28038666, 0.095199995, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7l3dv"]
+gradient = SubResource("Gradient_1j14s")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ga31"]
 particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+emission_shape_scale = Vector3(30, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -31.599989
+angle_max = 28.400011
+gravity = Vector3(0, -220, 0)
+tangential_accel_min = -20.000002
+tangential_accel_max = 19.999998
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_7l3dv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ga31"]
+size = Vector2(20, 670)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7ga31")
@@ -56,5 +90,19 @@ scale = Vector2(4, 4)
 texture = ExtResource("8_7ga31")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_7ga31")
+position = Vector2(1220, 929)
 amount = 100
+texture = SubResource("GradientTexture2D_1j14s")
+lifetime = 2.5
+randomness = 0.61
 process_material = SubResource("ParticleProcessMaterial_7ga31")
+
+[node name="FireHurt" type="StaticBody2D" parent="GPUParticles2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("9_1j14s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GPUParticles2D/FireHurt"]
+position = Vector2(0, -325)
+shape = SubResource("RectangleShape2D_7ga31")

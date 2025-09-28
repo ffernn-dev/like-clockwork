@@ -559,6 +559,9 @@ func _placeHolder():
 	print("")
 
 func _on_hurt_box_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if is_instance_of(body, FireHurt):
+		body.call_deferred("disable")
+		die(true)
 	if body is TileMapLayer and not dead:
 		die(false)
 
