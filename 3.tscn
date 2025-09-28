@@ -25,9 +25,9 @@ position = Vector2(1790, 670)
 position = Vector2(702, 691)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 816.0
-offset_top = 560.0
-offset_right = 1166.0
-offset_bottom = 583.0
+offset_left = 531.0
+offset_top = 403.0
+offset_right = 881.0
+offset_bottom = 426.0
 text = "Corpses can also be used to navigate hazards"
 horizontal_alignment = 1
