@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://tf4v0s5k57gs"]
+[gd_scene load_steps=7 format=4 uid="uid://tf4v0s5k57gs"]
 
 [ext_resource type="Script" uid="uid://dpwxbe812ukqs" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://d2fa2ymdbyltv" path="res://components/tileset.tres" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/door.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cdkgymljncdj1" path="res://assets/sprites/button-sign.png" id="6_5iwlv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
@@ -23,3 +24,8 @@ lever = NodePath("../Lever")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(958, 673)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(510, 517)
+scale = Vector2(4, 4)
+texture = ExtResource("6_5iwlv")
