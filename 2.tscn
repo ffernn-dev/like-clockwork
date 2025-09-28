@@ -66,5 +66,5 @@ position = Vector2(956, 672)
 lever = NodePath("../Lever")
 
 [node name="BackgroundObjects" type="TileMapLayer" parent="."]
-position = Vector2(1285, 540)
+tile_map_data = PackedByteArray("AAAHAAgAAAAEAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_1qnog")

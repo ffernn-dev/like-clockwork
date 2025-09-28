@@ -47,5 +47,5 @@ text = "Corpses can also be used to navigate hazards"
 horizontal_alignment = 1
 
 [node name="BackgroundObjects" type="TileMapLayer" parent="."]
-position = Vector2(1285, 540)
+tile_map_data = PackedByteArray("AAAGAAQAAAADAAAAAAAGAAUAAAADAAAAAAAHAAUAAAADAAAAAAAMAAUAAAADAAAAAAAQAAQAAAADAAAAAAASAAUAAAADAAAAAAAQAAUAAAADAAAAAAAUAAUAAAAEAAAAAAAWAAUAAAADAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_yrvgx")

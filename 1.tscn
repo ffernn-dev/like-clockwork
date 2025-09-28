@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="6_sj4ut"]
 [ext_resource type="Shader" uid="uid://bt66c14ckww41" path="res://postprocess.gdshader" id="8_e348n"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cckd2"]
+shader = ExtResource("8_e348n")
+shader_parameter/grain_amount = 0.05
+shader_parameter/grain_size = 1.0
+shader_parameter/animate = true
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rr1cv"]
 texture = ExtResource("2_cckd2")
 texture_region_size = Vector2i(64, 64)
@@ -23,18 +29,8 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_rr1cv")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cckd2"]
-shader = ExtResource("8_e348n")
-shader_parameter/grain_amount = 0.05
-shader_parameter/grain_size = 1.0
-shader_parameter/animate = true
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
-
-[node name="BackgroundObjects" type="TileMapLayer" parent="."]
-position = Vector2(1285, 540)
-tile_set = SubResource("TileSet_x8dme")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(1285, 540)
@@ -91,3 +87,7 @@ offset_bottom = 952.0
 text = "Less graceful deaths 
 destroy all corpses on screen"
 horizontal_alignment = 1
+
+[node name="BackgroundObjects" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAAwAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAYAAwAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_x8dme")

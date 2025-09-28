@@ -29,6 +29,11 @@ script = ExtResource("1_0xm2m")
 position = Vector2(1285, 540)
 texture = ExtResource("2_eukqi")
 
+[node name="BackgroundObjects" type="TileMapLayer" parent="BG"]
+position = Vector2(-1285, -540)
+tile_map_data = PackedByteArray("AAAZAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAAAAAAAAAHAAwAAAACAAAAAAABAAwAAAABAAAAAAAcAAsAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_113jv")
+
 [node name="Sprite2D" type="Sprite2D" parent="BG"]
 position = Vector2(471, -223)
 scale = Vector2(4, 4)
@@ -48,7 +53,3 @@ position = Vector2(634, 735)
 
 [node name="Lever" parent="." instance=ExtResource("7_48hau")]
 position = Vector2(1756, 297)
-
-[node name="BackgroundObjects" type="TileMapLayer" parent="."]
-position = Vector2(1285, 540)
-tile_set = SubResource("TileSet_113jv")
