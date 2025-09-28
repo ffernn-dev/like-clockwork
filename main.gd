@@ -3,8 +3,13 @@ extends Node2D
 const player_scene := preload("res://player.tscn")
 var dead_players = []
 var player: Player2D
+var player_spawn_pos = Vector2(0, 0)
 
 func _ready():
+	for node in get_children():
+		if is_instance_of(node, PlayerSpawn):
+			player_spawn_pos = node.position
+			break
 	spawn_player()
 
 func spawn_player():
@@ -13,6 +18,7 @@ func spawn_player():
 		dead_players.pop_front()
 	player = player_scene.instantiate()
 	add_child(player)
+	player.position = player_spawn_pos
 	player.died.connect(_on_player_died)
 
 func kill_player():
