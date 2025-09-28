@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsocu3pgododp"]
+[gd_scene load_steps=16 format=3 uid="uid://dsocu3pgododp"]
 
 [ext_resource type="Texture2D" uid="uid://dsswu4odk5eux" path="res://assets/sprites/door(32x48p).png" id="1_20bt6"]
 [ext_resource type="Script" uid="uid://bmaoko4ubiv86" path="res://components/puzzle_objects/exit_door.gd" id="1_e17y1"]
 [ext_resource type="Shader" uid="uid://ce4xgwxahoisw" path="res://outline.gdshader" id="2_wv848"]
 [ext_resource type="Script" uid="uid://ikdsc2ydik53" path="res://components/puzzle_objects/door_interact_box.gd" id="3_clmxy"]
+[ext_resource type="Texture2D" uid="uid://c65era4nc55nr" path="res://assets/sprites/door???-SheetUpdated.png" id="4_ets8n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ets8n"]
 shader = ExtResource("2_wv848")
@@ -22,20 +23,20 @@ region = Rect2(32, 0, 32, 48)
 atlas = ExtResource("1_20bt6")
 region = Rect2(0, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_clmxy"]
-atlas = ExtResource("1_20bt6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7twf5"]
+atlas = ExtResource("4_ets8n")
 region = Rect2(64, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_knc6i"]
-atlas = ExtResource("1_20bt6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6lxb"]
+atlas = ExtResource("4_ets8n")
 region = Rect2(96, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hmwlm"]
-atlas = ExtResource("1_20bt6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1870d"]
+atlas = ExtResource("4_ets8n")
 region = Rect2(128, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk4j0"]
-atlas = ExtResource("1_20bt6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhin1"]
+atlas = ExtResource("4_ets8n")
 region = Rect2(160, 0, 32, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2jtxk"]
@@ -58,16 +59,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_clmxy")
+"texture": SubResource("AtlasTexture_7twf5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_knc6i")
+"texture": SubResource("AtlasTexture_a6lxb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hmwlm")
+"texture": SubResource("AtlasTexture_1870d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uk4j0")
+"texture": SubResource("AtlasTexture_bhin1")
 }],
 "loop": false,
 "name": &"open",
@@ -90,8 +91,6 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2jtxk")
 animation = &"open"
 autoplay = "locked"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 26)
