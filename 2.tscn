@@ -5,22 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_e5jh0"]
 [ext_resource type="Texture2D" uid="uid://yh6biern7sp3" path="res://assets/sprites/lever copy-Sheet.png" id="3_5mfaa"]
 [ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cdkgymljncdj1" path="res://assets/sprites/button-sign.png" id="6_5iwlv"]
-[ext_resource type="PackedScene" uid="uid://ce4i0wt1k65rk" path="res://components/puzzle_objects/game_button.tscn" id="9_5mfaa"]
-[ext_resource type="PackedScene" uid="uid://dp3n5hg8odcdw" path="res://components/puzzle_objects/button_door.tscn" id="10_xxyub"]
+[ext_resource type="PackedScene" path="res://components/puzzle_objects/game_button.tscn" id="9_5mfaa"]
+[ext_resource type="PackedScene" path="res://components/puzzle_objects/exit_door.tscn" id="10_7eokq"]
+[ext_resource type="PackedScene" path="res://components/puzzle_objects/button_door.tscn" id="10_xxyub"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
 [node name="BG" type="Sprite2D" parent="."]
-position = Vector2(1285, 540)
+position = Vector2(962, 540)
 texture = ExtResource("2_e5jh0")
 
-[node name="Sprite2D" type="Sprite2D" parent="BG"]
-position = Vector2(-956, -64)
-rotation = 3.1415927
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(329, 476)
+rotation = -3.1415925
 scale = Vector2(4, 4)
 texture = ExtResource("3_5mfaa")
 
@@ -31,10 +31,6 @@ tile_set = ExtResource("2_1bvp3")
 
 [node name="Lever" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(329, 482)
-
-[node name="Door" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("4_1bvp3")]
-position = Vector2(958, 672)
-lever = NodePath("../Lever")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(958, 673)
@@ -50,3 +46,6 @@ position = Vector2(1796, 736)
 [node name="ButtonDoor" parent="." node_paths=PackedStringArray("button") instance=ExtResource("10_xxyub")]
 position = Vector2(478, 736)
 button = NodePath("../GameButton")
+
+[node name="ExitDoor" parent="." instance=ExtResource("10_7eokq")]
+position = Vector2(956, 672)
