@@ -21,6 +21,7 @@ var current_level_idx: int
 
 func _ready():
 	set_process(false)
+	
 	_load()
 	current_level_idx = 0
 	EventBus.level_complete.connect(_on_level_complete)

@@ -26,16 +26,16 @@ sources/0 = SubResource("TileSetAtlasSource_1r778")
 script = ExtResource("1_p565q")
 
 [node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.85, 0.85, 0.85, 1)
 position = Vector2(1285, 540)
 texture = ExtResource("2_eukqi")
 
-[node name="BackgroundObjects" type="TileMapLayer" parent="BG"]
-position = Vector2(-1285, -540)
+[node name="BackgroundObjects" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAZAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAAAAAAAAAHAAwAAAACAAAAAAABAAwAAAABAAAAAAAcAAsAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_113jv")
 
-[node name="Sprite2D" type="Sprite2D" parent="BG"]
-position = Vector2(471, -223)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1756, 317)
 scale = Vector2(4, 4)
 texture = ExtResource("3_p565q")
 
