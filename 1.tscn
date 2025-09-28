@@ -27,8 +27,9 @@ tile_set = ExtResource("2_1bvp3")
 [node name="Lever" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(1472, 739)
 
-[node name="ExitDoor" parent="." instance=ExtResource("6_sj4ut")]
+[node name="ExitDoor" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("6_sj4ut")]
 position = Vector2(765, 736)
+lever = NodePath("../Lever")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(136, 765)
@@ -49,6 +50,7 @@ scale = Vector2(2, 2)
 text = "Z = Jump
 X = Interact
 C = Die
+R = Restart
 Move with arrow keys"
 
 [node name="Label3" type="Label" parent="."]
