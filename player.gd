@@ -77,6 +77,7 @@ var deceleration: float
 var instantAccel: bool = false
 var instantStop: bool = false
 
+var maxJumps: int = 1
 var jumpMagnitude: float = 500.0
 var jumpCount: int
 var jumpWasPressed: bool = false
@@ -136,6 +137,7 @@ func _ready():
 	anim = PlayerSprite
 	animKey = $Key
 	col = IdleCollider
+	jumpCount = 0
 	_updateData()
 
 func die(graceful: bool):
@@ -400,6 +402,7 @@ func _physics_process(delta):
 			_jump()
 	if is_on_floor():
 		coyoteActive = true
+		jumpCount = 0
 		if jumpWasPressed:
 			_jump()
 	
@@ -511,8 +514,10 @@ func _setHitbox(hitbox: String):
 	col.visible = true
 	
 func _jump():
-	velocity.y = -jumpMagnitude
-	jumpWasPressed = false
+	if jumpCount < maxJumps:
+		velocity.y = -jumpMagnitude
+		jumpCount += 1
+		jumpWasPressed = false
 
 func _inputPauseReset(time):
 	await get_tree().create_timer(time).timeout
