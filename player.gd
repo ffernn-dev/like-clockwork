@@ -128,7 +128,8 @@ var dead
 
 var currentTilemap: TileMapLayer
 
-var interactable : Node = null
+var interactable: Node = null
+var button: GameButton = null
 
 func _ready():
 	dead = false
@@ -279,6 +280,14 @@ func _process(_delta):
 			anim.play("crouch_idle")
 
 func _physics_process(delta):
+	var down = $DownRayCast
+	if down.is_colliding():
+		if is_instance_of(down.get_collider(), GameButton):
+			button = down.get_collider()
+			button.interact(self, true)
+	elif button:
+		button.interact(self, false)
+	
 	if !dset:
 		gdelta = delta
 		dset = true

@@ -5,13 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bmqe4wrlkuhvw" path="res://assets/art/backdrop1_pixels.png" id="2_tc3pe"]
 [ext_resource type="PackedScene" uid="uid://c4u1i1ywalu18" path="res://components/puzzle_objects/lever.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://yh6biern7sp3" path="res://assets/sprites/lever copy-Sheet.png" id="3_sj4ut"]
-[ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/door.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dsocu3pgododp" path="res://components/puzzle_objects/exit_door.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://boepofugwtyqb" path="res://components/puzzle_objects/player_spawn.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
 [node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.87, 0.87, 0.87, 1)
 position = Vector2(1285, 540)
 texture = ExtResource("2_tc3pe")
 
@@ -57,6 +58,6 @@ offset_left = 872.0
 offset_top = 903.0
 offset_right = 1116.0
 offset_bottom = 952.0
-text = "Less graceful deaths 
+text = "Less graceful deaths
 destroy all corpses on screen"
 horizontal_alignment = 1

@@ -14,7 +14,7 @@ func reset(graceful):
 		active = false
 		emit_signal("toggled", active)
 
-func interact(actor):
+func interact(actor, _state = false):
 	if active:
 		anim.play_backwards("default")
 	else:

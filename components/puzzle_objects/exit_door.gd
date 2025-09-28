@@ -1,26 +1,18 @@
-extends StaticBody2D
+class_name ExitDoor extends "res://components/door.gd"
+
+var closing := false
 
 @export var lever: Lever
 var leverless
 
-var closing := false
-
-@onready var anim := $Sprite
-
 func _ready():
 	if lever:
-		lever.toggled.connect(_on_lever_toggled)
+		lever.toggled.connect(_on_door_toggled)
 		leverless = false
 		anim.play("locked")
 	else:
 		anim.play("closed")
 		leverless = true
-
-func _on_lever_toggled(state: bool):
-	if state:
-		open()
-	else:
-		close()
 
 func open(without_key := false):
 	if leverless or not without_key:

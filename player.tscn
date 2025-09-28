@@ -312,6 +312,13 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_i3pqv")
 
+[node name="DownRayCast" type="RayCast2D" parent="."]
+position = Vector2(0, 42)
+target_position = Vector2(0, 20)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
 [connection signal="area_entered" from="InteractBox" to="." method="_on_interact_box_area_entered"]
 [connection signal="area_exited" from="InteractBox" to="." method="_on_interact_box_area_exited"]
 [connection signal="body_shape_entered" from="HurtBox" to="." method="_on_hurt_box_body_shape_entered"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp3n5hg8odcdw"]
+
+[ext_resource type="Script" uid="uid://b0x7y42nv8b3v" path="res://components/puzzle_objects/button_door.gd" id="1_u6085"]
+[ext_resource type="Texture2D" uid="uid://s4qsy8rmdqho" path="res://assets/sprites/button-door(48x16)-Sheet.png" id="2_o6uu0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6uu0"]
+atlas = ExtResource("2_o6uu0")
+region = Rect2(0, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg3ka"]
+atlas = ExtResource("2_o6uu0")
+region = Rect2(16, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f6oq"]
+atlas = ExtResource("2_o6uu0")
+region = Rect2(32, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olybx"]
+atlas = ExtResource("2_o6uu0")
+region = Rect2(48, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwt2f"]
+atlas = ExtResource("2_o6uu0")
+region = Rect2(64, 0, 16, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y81kd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6uu0")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg3ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f6oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olybx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwt2f")
+}],
+"loop": false,
+"name": &"open",
+"speed": 24.0
+}]
+
+[node name="ButtonDoor" type="Node2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_u6085")
+anim = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_y81kd")
+animation = &"open"
+autoplay = "closed"
+frame = 3
+frame_progress = 1.0

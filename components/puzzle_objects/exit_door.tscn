@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsocu3pgododp"]
 
 [ext_resource type="Texture2D" uid="uid://dsswu4odk5eux" path="res://assets/sprites/door(32x48p).png" id="1_20bt6"]
-[ext_resource type="Script" uid="uid://dlkcybg8te8i4" path="res://components/puzzle_objects/door.gd" id="1_sqh30"]
+[ext_resource type="Script" uid="uid://bmaoko4ubiv86" path="res://components/puzzle_objects/exit_door.gd" id="1_e17y1"]
 [ext_resource type="Script" uid="uid://ikdsc2ydik53" path="res://components/puzzle_objects/door_interact_box.gd" id="3_clmxy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jtxk"]
@@ -70,8 +70,9 @@ size = Vector2(48, 140)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqh30"]
 size = Vector2(96, 140)
 
-[node name="Door" type="StaticBody2D"]
-script = ExtResource("1_sqh30")
+[node name="ExitDoor" type="StaticBody2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_e17y1")
+anim = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)

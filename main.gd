@@ -29,6 +29,8 @@ func kill_player():
 func _input(event):
 	if event.is_action_pressed("die"):
 		kill_player()
+	if event.is_action_pressed("restart"):
+		restart_level()
 
 func _on_player_died(graceful) -> void:
 	if not graceful:
@@ -41,4 +43,3 @@ func restart_level() -> void:
 	var current := get_tree().current_scene
 	var path := current.scene_file_path
 	get_tree().call_deferred("change_scene_to_file", path)
-		
