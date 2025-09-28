@@ -47,5 +47,6 @@ position = Vector2(1796, 736)
 position = Vector2(478, 736)
 button = NodePath("../GameButton")
 
-[node name="ExitDoor" parent="." instance=ExtResource("10_7eokq")]
+[node name="ExitDoor" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("10_7eokq")]
 position = Vector2(956, 672)
+lever = NodePath("../Lever")
